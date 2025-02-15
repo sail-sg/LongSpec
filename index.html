@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification.">
+  <meta name="keywords" content="Speculative Decoding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.png">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="section" id="authors">
+    <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths has-text-centered">
+          <img src="static/images/favicon.png" alt="Magic Wand Icon" style="display: inline; height: 8rem; vertical-align: top;">
+          <h1 class="title is-2 publication-title">LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://phyang.top">Penghui Yang</a><sup>*2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com.hk/citations?user=4gFE1iYAAAAJ">Cunxiao Du</a><sup>*1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=qLpVG2IAAAAJ">Fengzhuo Zhang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://charles-haonan-wang.me/">Haonan Wang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://p2333.github.io/">Tianyu Pang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://duchao0726.github.io/">Chao Du</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://personal.ntu.edu.sg/boan/">Bo An</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Sea AI Lab,</span>
+            <span class="author-block"><sup>2</sup>Nanyang Technological University,</span>
+            <span class="author-block"><sup>3</sup>National University of Singapore</span>
+            <span class="eql-cntrb">
+              <small><br><sup>*</sup>Indicates Equal Contribution</small>
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://google.com"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://google.com"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://google.com"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div style="overflow: visible;">
+      <img src="static/images/teaser.png" alt="LongSpec Arch" style="width: 400%; min-width: 300px;" />
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-widescreen">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Speculative decoding has become a promising technique to mitigate the high inference 
+            latency of autoregressive decoding in Large Language Models (LLMs). Despite its 
+            promise, the effective application of speculative decoding in LLMs still confronts 
+            three key challenges: the increasing memory demands of the draft model, the distribution 
+            shift between the short-training corpora and long-context inference, and inefficiencies 
+            in attention implementation. 
+          </p>
+          <p>
+            In this work, we enhance the performance of speculative decoding in long-context settings 
+            by addressing these challenges. First, we propose a memory-efficient draft model with a 
+            constant-sized Key-Value (KV) cache. Second, we introduce novel position indices for 
+            short-training data, enabling seamless adaptation from short-context training to 
+            long-context inference. Finally, we present an innovative attention aggregation method 
+            that combines fast implementations for prefix computation with standard attention for 
+            tree mask handling, effectively resolving the latency and memory inefficiencies of tree 
+            decoding.
+          </p>
+          <p>
+            Our approach achieves strong results on various long-context tasks, including 
+            repository-level code completion, long-context summarization, and 
+            <b>o1-like long reasoning tasks</b>, 
+            demonstrating significant improvements in latency reduction.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section" id="challenges">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Challenges in Long-Context Speculative Decoding</h2>
+        <div class="content has-text-justified">
+          <p>
+            While speculative decoding has shown promise in reducing inference latency, existing research primarily focuses 
+            on short-context scenarios. The true potential of speculative decoding lies in long-context settings, where 
+            autoregressive decoding struggles to utilize GPU resources efficiently. However, draft models designed for 
+            short-context tasks fail to generalize well to long sequences due to fundamental limitations. We identify three 
+            key challenges that hinder their effectiveness in long-context speculative decoding.
+          </p>
+          <ol>
+              <li>
+                <span style="font-weight: bold; color: dodgerblue">
+                  Memory Overhead of the Draft Model
+                </span>
+                <p>
+                  As the sequence length increases, existing draft models, such as EAGLE and GliDe, require a linearly growing 
+                  Key-Value (KV) cache, leading to excessive memory consumption. This problem is particularly severe in long-context 
+                  inference, where efficient memory usage is crucial.
+                </p>
+              </li>
+              <li>
+                <span style="font-weight: bold; color: dodgerblue">
+                  Distribution Shift in Position Indices
+                </span>
+                <p>
+                  Training data for speculative decoding primarily consists of short-context samples, which causes a mismatch when 
+                  applied to long-context inference. The draft model, having been trained mostly on small position indices, 
+                  struggles to speculate effectively on large indices.
+                </p>
+              </li>
+              <li>
+                <span style="font-weight: bold; color: dodgerblue">
+                  Inefficiencies in Tree Attention Implementation
+                </span>
+                <p>
+                  Tree-based speculative decoding, while effective, faces computational bottlenecks due to incompatibilities with 
+                  optimized attention kernels. Traditional implementations suffer from inefficient memory access patterns, 
+                  increasing latency.
+                </p>
+              </li>
+          </ol>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="methodology">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">LongSpec Methodology</h2>
+        <div class="content has-text-justified">
+          <p>
+            To overcome the challenges of long-context speculative decoding, we introduce <strong>LongSpec</strong>, a novel framework 
+            designed to improve efficiency and scalability. Our methodology consists of three key innovations that address memory overhead, 
+            position index distribution shift, and tree attention inefficiencies.
+          </p>
+          <div class="figure" style="text-align: center;">
+            <img src="static/images/1.png" alt="LongSpec Arch" style="width:80%; min-width: 300px;"/> 
+          </div>
+          <ol>
+            <li>
+              <span style="font-weight: bold; color: dodgerblue">
+                Memory-Efficient Architecture
+              </span>
+              <p>
+                To address the memory overhead problem, we introduce a memory-efficient draft model with constant memory usage, 
+                regardless of context length. Our architecture consists of a self-attention module with sliding-window attention to constrain 
+                memory usage and a cross-attention module that reuses the KV cache of the target model. Furthermore, we share the Embedding 
+                Layer and LM Head between the draft and target models, significantly reducing memory demands for large-vocabulary LLMs.
+              </p>
+            </li>
+            <li>
+              <span style="font-weight: bold; color: dodgerblue">
+                Effective Training Regimes
+              </span>
+              <p>
+                To solve the position index distribution shift problem, we propose two key techniques: Anchor-Offset Indices. 
+                The Anchor-Offset Indices strategy ensures balanced training across all positions by assigning large, 
+                random offsets after a fixed set of attention sink tokens, preventing over-reliance on small indices 
+                while maintaining compatibility with the target model. 
+              </p>
+            </li>
+            <li>
+              <span style="font-weight: bold; color: dodgerblue">
+                Fast Tree Attention
+              </span>
+              <p>
+                To mitigate the tree attention inefficiencies, which means the incompatibility between Tree Speculative 
+                Decoding and optimized attention kernels like <code>Flash_Decoding</code>, we introduce 
+                <b>Hybrid Tree Attention</b>, a method that partitions key-value pairs into two groups: cached tokens, 
+                which require no masking, and speculative tokens, which require masked attention. 
+                We then merge the outputs using a log-sum-exp trick with theoretical validity.
+              </p>
+            </li>
+          </ol>
+          
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experiments">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Experiments</h2>
+        <div class="content has-text-justified">
+          <h4>Main Results</h4> 
+          <p>
+            The table and the figure below show the decoding speeds and mean accept lengths across the five evaluated datasets at T=0 and T=1 respectively. 
+            Our proposed method significantly outperforms all other approaches on both summarization tasks and code completion tasks. 
+            When T=0, on summarization tasks, our method can achieve a mean accepted length of around 3.5 and a speedup of up to 2.67x; 
+            and on code completion tasks, our method can achieve a mean accepted length of around 4 and a speedup of up to 3.26x. 
+            This highlights the robustness and generalizability of our speculative decoding approach, particularly in long-text generation tasks. 
+            At T=1, our method's performance achieves around 2.5x speedup, maintaining a substantial lead over MagicDec. 
+            This indicates that our approach is robust across different temperature settings, further validating its soundness and efficiency.
+          </p>
+          <div class="figure" style="text-align: center;">
+            <img src="static/images/tableT0.png" alt="LongSpec Results T=0" />
+          </div>
+          <div class="figure" style="text-align: center;">
+            <img src="static/images/picT1.png" alt="LongSpec Results T=1" />
+          </div>
+
+          <h4>Long CoT Acceleration</h4>
+          <p>
+            Long Chain-of-Thought (LongCoT) tasks have gained significant attention recently due to their ability to enable models to perform complex reasoning and problem-solving over extended outputs. In these tasks, while the prefix input is often relatively short, the generated output can be extremely long, posing unique challenges in terms of efficiency and token acceptance. Our method is particularly well-suited for addressing these challenges, effectively handling scenarios with long outputs. It is worth mentioning that MagicDec is not suitable for such long-output scenarios because the initial inference stage of the LongCoT task is not the same as the traditional long-context task. In LongCoT tasks, where the prefix is relatively short, the draft model in MagicDec will completely degrade into the target model, failing to achieve acceleration.
+          </p>
+          <p>            
+            We evaluate our method on the <b>QwQ-32B</b> model using the widely-used benchmark <b>AIME24</b> dataset, with a maximum output length set to 32k tokens. 
+            The results, illustrated below, demonstrate a significant improvement in both generation speed and mean accepted tokens. 
+            Specifically, our method achieved a generation rate of 42.63 tokens/s, 2.25x higher than the baseline's 18.92 tokens/s, and an average of 3.82 mean accepted tokens.
+            Notably, QwQ-32B with LongSpec achieves even lower latency than the vanilla 7B model with <code>Flash_Decoding</code>, demonstrating that our method effectively accelerates the LongCoT model.
+            These findings not only highlight the effectiveness of our method in the LongCoT task but also provide new insights into lossless inference acceleration for the o1-like model.
+            We believe that speculative decoding will play a crucial role in accelerating this type of model in the future.
+          </p>
+          <div class="figure" style="text-align: center;">
+            <img src="static/images/longcot.png" alt="LongCoT Results" style="width:80%; min-width: 300px;" />
+          </div>
+
+          <h4>Ablation Studies</h4>
+          <p>
+            The figure below shows that pretrained with Anchor-Offset Indices achieve a lower initial loss and final loss compared to those trained without it when training over the real long-context dataset. 
+            Notably, the initalization with Anchor-Offset Indices reaches the same loss level $3.93\times$ faster than its counterpart. 
+          </p>
+          <div class="figure" style="text-align: center;">
+            <img src="static/images/ablation1.png" alt="Ablation Study 1" style="width:50%; min-width: 300px;" />
+          </div>
+          <p>
+            The results presented below highlight the effectiveness of the proposed Hybrid Tree Attention, which combines <code>Flash_Decoding</code> with the Triton kernel <code>fused_mask_attn</code>. 
+            While the time spent on the draft model forward pass and the target model FFN computations remain comparable across the two methods, the hybrid approach exhibits a significant reduction in latency for the target model's attention layer (the yellow part). 
+            Specifically, the attention computation latency decreases from 49.92 ms in the HF implementation to 12.54 ms in the hybrid approach, resulting in an approximately 75% improvement. 
+          </p>
+          <div class="figure" style="text-align: center;">
+            <img src="static/images/ablation2.png" alt="Ablation Study 2" style="width:50%; min-width: 300px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="experiments">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Conclusion</h2>
+        <div class="content has-text-justified">
+          In this paper, we propose LongSpec, a novel framework designed to enhance speculative decoding 
+          for long-context scenarios. Unlike previous speculative decoding methods that primarily focus 
+          on short-context settings, LongSpec directly addresses three key challenges: excessive memory 
+          overhead, inadequate training for large position indices, and inefficient tree attention computation. 
+          To mitigate memory constraints, we introduce an efficient draft model architecture that maintains a 
+          constant memory footprint by leveraging a combination of sliding window self-attention and cache-free 
+          cross-attention. To resolve the training limitations associated with short context data, we propose 
+          the Anchor-Offset Indices, ensuring that large positional indices are sufficiently trained even within 
+          short-sequence datasets. Finally, we introduce Hybrid Tree Attention, 
+          which efficiently integrates tree-based speculative decoding with <code>Flash_Decoding</code>. 
+          Extensive experiments demonstrate the effectiveness of LongSpec in long-context understanding tasks 
+          and real-world long reasoning tasks. Our findings highlight the importance of designing speculative 
+          decoding methods specifically tailored for long-context settings and pave the way for future research 
+          in efficient large-scale language model inference.
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{yang2025longspec,
+  author    = {Penghui Yang and Cunxiao Du and Fengzhuo Zhang and Haonan Wang and Tianyu Pang and Chao Du and Bo An},
+  title     = {LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification},
+  journal   = {arXiv},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="google.com">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://google.com" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>
+            and adapted from source at <a href="http://nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
