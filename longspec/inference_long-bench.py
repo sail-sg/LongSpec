@@ -26,11 +26,6 @@ dataset2prompt = {
         "News:\n{context}\n\nNow, write a one-page summary of all the news.</s>\n"
         "<s>assistant\nSummary:"
     ),
-    "vcsum": (
-        "<s>system\nYou are a helpful assistant</s>\n"
-        "<s>user\n下面有一段会议记录，请你阅读后，写一段总结，总结会议的内容。\n会议记录：\n{context}</s>\n"
-        "<s>assistant\n会议总结："
-    ),
     "lcc": (
         "<s>system\nYou are a helpful assistant</s>\n"
         "<s>user\nPlease complete the code given below. \n{context}Now, complete the code given.</s>\n"
