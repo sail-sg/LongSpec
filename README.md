@@ -88,3 +88,16 @@ python inference_qwq.py\
 ```
 
 The questions with id from 60 to 89 are AIME24 questions in the dataset `AI-MO/aimo-validation-aime`.
+
+## Citation
+
+If you find this repo useful for your research, please consider citing the paper.
+
+```bibtex
+@article{yang2025longspec,
+  author={Penghui Yang and Cunxiao Du and Fengzhuo Zhang and Haonan Wang and Tianyu Pang and Chao Du and Bo An},
+  title={LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification},
+  journal={arXiv preprint arXiv:2502.17421},
+  year={2025},
+}
+```
