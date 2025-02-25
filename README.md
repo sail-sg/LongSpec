@@ -1,20 +1,23 @@
-# LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification
+<div align="center">
+<h1><img src="static/images/favicon.png" height="40px" align="top"/> LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification
+</h1>
+</div>
 
-<p align="center">
-  <a href="https://phyang.top/"><strong>Penghui Yang<sup>*</sup></strong></a>
-  ·
-  <a href="#"><strong>Cunxiao Du<sup>*</sup></strong></a>
-  ·
-  <a href="#"><strong>Fengzhuo Zhang</strong></a>
-  ·
-  <a href="#"><strong>Haonan Wang</strong></a>
-  ·
-  <a href="#"><strong>Tianyu Pang</strong></a>
-  ·
-  <a href="#"><strong>Chao Du</strong></a>
-  ·
-  <a href="#"><strong>Bo An</strong></a>
-</p>
+<div align="center">
+<b><a href="https://phyang.top">Penghui Yang<sup>*</sup></a></b> ·
+<b><a href="https://scholar.google.com.hk/citations?user=4gFE1iYAAAAJ">Cunxiao Du<sup>*</sup></a></b> ·
+<b><a href="https://scholar.google.com/citations?user=qLpVG2IAAAAJ">Fengzhuo Zhang</a></b> ·
+<b><a href="https://charles-haonan-wang.me/">Haonan Wang</a></b> ·
+<b><a href="https://p2333.github.io/">Tianyu Pang</a></b> ·
+<b><a href="https://duchao0726.github.io/">Chao Du</a></b> ·
+<b><a href="https://personal.ntu.edu.sg/boan/">Bo An</a></b>
+</div>
+
+<div align="center">
+[<a href="https://arxiv.org/abs/2502.17421">Paper</a>] |
+[<a href="https://sail-sg.github.io/LongSpec/">Blog</a>]
+</div>
+<br>
 
 <div align=center><img src='./static/images/1.png' width=600></div>
 
