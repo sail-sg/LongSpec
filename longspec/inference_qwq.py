@@ -101,7 +101,7 @@ if __name__ == "__main__":
                 output_ids, count, num, elapsed_time, spec_mask = qwen2_glide.spec_generate(
                     meta_prompt["input_ids"], 
                     prompt_length=meta_prompt["length"], 
-                    max_gen_len=1024, 
+                    max_gen_len=args.max_gen_len, 
                     gamma=args.gamma,
                     temperature=args.temperature,
                 )

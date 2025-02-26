@@ -70,6 +70,7 @@ def get_args():
     ])
     parser.add_argument("--data_path_prefix", type=str)
     parser.add_argument("--test_length", default=1, type=int)
+    parser.add_argument("--max_gen_len", default=1024, type=int)
     parser.add_argument("--temperature", default=0.0, type=float)
     parser.add_argument("--gamma", default=4, type=int, help='sequence length')
     parser.add_argument('--tree_shape', nargs='+', type=int, default=[4, 16, 16, 16, 16], help='A list of tree size (default: [4, 16, 16, 16, 16])')
@@ -137,7 +138,7 @@ if __name__ == "__main__":
                 output_ids, num, elapsed_time = llama_glide.vanilla_generate(
                     meta_prompt["input_ids"], 
                     prompt_length=meta_prompt["length"], 
-                    max_gen_len=1024,
+                    max_gen_len=args.max_gen_len,
                 )
                 print(num, elapsed_time)
                 print(tokenizer.decode(output_ids[0]))
@@ -159,7 +160,7 @@ if __name__ == "__main__":
                 output_ids, num, elapsed_time = llama_glide.vanilla_torch_generate(
                     meta_prompt["input_ids"], 
                     prompt_length=meta_prompt["length"], 
-                    max_gen_len=1024
+                    max_gen_len=args.max_gen_len
                 )
                 print(num, elapsed_time)
                 print(tokenizer.decode(output_ids[0]))
@@ -182,7 +183,7 @@ if __name__ == "__main__":
                 output_ids, count, num, elapsed_time, spec_mask = llama_glide.spec_generate(
                     meta_prompt["input_ids"], 
                     prompt_length=meta_prompt["length"], 
-                    max_gen_len=1024, 
+                    max_gen_len=args.max_gen_len, 
                     gamma=args.gamma,
                     temperature=args.temperature,
                 )
@@ -208,7 +209,7 @@ if __name__ == "__main__":
                 output_ids, count, num, elapsed_time, spec_mask = llama_glide.magicdec_generate(
                     meta_prompt["input_ids"], 
                     prompt_length=meta_prompt["length"], 
-                    max_gen_len=1024, 
+                    max_gen_len=args.max_gen_len, 
                     gamma=args.gamma,
                     temperature=args.temperature,
                 )
@@ -233,7 +234,7 @@ if __name__ == "__main__":
             output_ids, count, num, elapsed_time, spec_mask = llama_glide.tree_spec_generate(
                 meta_prompts[0]["input_ids"], 
                 prompt_length=meta_prompts[0]["length"], 
-                max_gen_len=1024, 
+                max_gen_len=args.max_gen_len, 
                 tree_shape=args.tree_shape,
                 temperature=args.temperature,
             )
@@ -243,7 +244,7 @@ if __name__ == "__main__":
                 output_ids, count, num, elapsed_time, spec_mask = llama_glide.tree_spec_generate(
                     meta_prompt["input_ids"], 
                     prompt_length=meta_prompt["length"], 
-                    max_gen_len=1024, 
+                    max_gen_len=args.max_gen_len, 
                     tree_shape=args.tree_shape,
                     temperature=args.temperature,
                 )

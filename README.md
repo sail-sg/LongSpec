@@ -68,6 +68,7 @@ python inference_long-bench.py\
     --task gov_report\
     --data_path_prefix [your data folder of longbench]\
     --test_length 0\
+    --max_gen_len 1024\
     --temperature 0\
     --tree_shape 4 16 16 16 16
 ```
@@ -82,12 +83,14 @@ python inference_qwq.py\
     --method tree\
     --id_min 60\
     --id_max 89\
-    --max_gen_len 32000\
+    --max_gen_len 20000\
     --temperature 0\
     --tree_shape 4 16 16 16 16
 ```
 
 The questions with id from 60 to 89 are AIME24 questions in the dataset `AI-MO/aimo-validation-aime`.
+
+It is recommended to test on a single 80GB GPU; otherwise, unexpected issues such as insufficient VRAM may occur.
 
 ## Citation
 
