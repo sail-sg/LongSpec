@@ -57,6 +57,10 @@ We provide the weights for LongSpec models. Please download them from the follow
 | [gradientai/Llama-3-8B-Instruct-262k](https://huggingface.co/gradientai/Llama-3-8B-Instruct-262k) | [sail/longspec-Llama-3-8B-Instruct-262k](https://huggingface.co/sail/longspec-Llama-3-8B-Instruct-262k) |
 | [Qwen/QwQ-32B-Preview](https://huggingface.co/Qwen/QwQ-32B-Preview) | [sail/longspec-QwQ-32B-Preview](https://huggingface.co/sail/longspec-QwQ-32B-Preview) |
 
+## LongSpec Data
+
+We also provide the data for training LongSpec models. You can download from the following link: [sail/longspec-data](https://huggingface.co/datasets/sail/longspec-data). The way of using this data can be found in `./longspec/data.py`.
+
 ## Evaluation
 
 We provide the whole inference speed test code in the folder `./longspec`. For example, you can use the following command line the test the performance of `longspec-Llama-3-8B-Instruct-262k` on the `GovReport` dataset:
