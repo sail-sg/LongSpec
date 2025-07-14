@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification.">
+        content="LongSpec: Long-Context Lossless Speculative Decoding with Efficient Drafting and Verification.">
   <meta name="keywords" content="Speculative Decoding">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification</title>
+  <title>LongSpec: Long-Context Lossless Speculative Decoding with Efficient Drafting and Verification</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.png">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -48,7 +48,7 @@
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
           <img src="static/images/favicon.png" alt="Magic Wand Icon" style="display: inline; height: 8rem; vertical-align: top;">
-          <h1 class="title is-2 publication-title">LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification</h1>
+          <h1 class="title is-2 publication-title">LongSpec: Long-Context Lossless Speculative Decoding with Efficient Drafting and Verification</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://phyang.top">Penghui Yang</a><sup>*2</sup>,
@@ -172,14 +172,14 @@
   <div class="container is-max-widescreen">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Challenges in Long-Context Speculative Decoding</h2>
+        <h2 class="title is-3">Key Challenges in Long-Context Lossless Speculative Decoding</h2>
         <div class="content has-text-justified">
           <p>
             While speculative decoding has shown promise in reducing inference latency, existing research primarily focuses 
             on short-context scenarios. The true potential of speculative decoding lies in long-context settings, where 
             autoregressive decoding struggles to utilize GPU resources efficiently. However, draft models designed for 
             short-context tasks fail to generalize well to long sequences due to fundamental limitations. We identify three 
-            key challenges that hinder their effectiveness in long-context speculative decoding.
+            key challenges that hinder their effectiveness in long-context lossless speculative decoding.
           </p>
           <ol>
               <li>
@@ -226,7 +226,7 @@
         <h2 class="title is-3">LongSpec Methodology</h2>
         <div class="content has-text-justified">
           <p>
-            To overcome the challenges of long-context speculative decoding, we introduce <strong>LongSpec</strong>, a novel framework 
+            To overcome the challenges of long-context lossless speculative decoding, we introduce <strong>LongSpec</strong>, a novel framework 
             designed to improve efficiency and scalability. Our methodology consists of three key innovations that address memory overhead, 
             position index distribution shift, and tree attention inefficiencies.
           </p>
@@ -371,7 +371,7 @@
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{yang2025longspec,
   author    = {Penghui Yang and Cunxiao Du and Fengzhuo Zhang and Haonan Wang and Tianyu Pang and Chao Du and Bo An},
-  title     = {LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification},
+  title     = {LongSpec: Long-Context Lossless Speculative Decoding with Efficient Drafting and Verification},
   journal   = {arXiv preprint arXiv:2502.17421},
   year      = {2025},
 }</code></pre>
