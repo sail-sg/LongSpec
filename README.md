@@ -1,5 +1,5 @@
 <div align="center">
-<h1><img src="static/images/favicon.png" height="40px" align="top"/> LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification
+<h1><img src="static/images/favicon.png" height="40px" align="top"/> LongSpec: Long-Context Lossless Speculative Decoding with Efficient Drafting and Verification
 </h1>
 </div>
 
@@ -20,6 +20,11 @@
 <br>
 
 <div align=center><img src='./static/images/1.png' width=600></div>
+
+## News
+
+- [2025.07] Training code released.
+- [2025.02] Our paper and evaluation code released.
 
 ## Introduction
 
@@ -96,6 +101,10 @@ The questions with id from 60 to 89 are AIME24 questions in the dataset `AI-MO/a
 
 It is recommended to test on a single 80GB GPU; otherwise, unexpected issues such as insufficient VRAM may occur.
 
+## Training
+
+Details can be found in `./longspec/train/README.md`.
+
 ## Citation
 
 If you find this repo useful for your research, please consider citing the paper.
@@ -103,7 +112,7 @@ If you find this repo useful for your research, please consider citing the paper
 ```bibtex
 @article{yang2025longspec,
   author={Penghui Yang and Cunxiao Du and Fengzhuo Zhang and Haonan Wang and Tianyu Pang and Chao Du and Bo An},
-  title={LongSpec: Long-Context Speculative Decoding with Efficient Drafting and Verification},
+  title={LongSpec: Long-Context Lossless Speculative Decoding with Efficient Drafting and Verification},
   journal={arXiv preprint arXiv:2502.17421},
   year={2025},
 }
