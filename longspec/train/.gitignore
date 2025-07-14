@@ -1,0 +1,10 @@
+checkpoint/*
+wandb/*
+**/*.pyc
+logs/*
+*.log
+*.pth
+log_dir/*
+conf/exp/numina_math/*
+**/.nfs*
+scripts/*
